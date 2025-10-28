@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="kk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Саумалкөл ауылы</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Анимацияға арналған арнайы стильдер.
+          Tailwind CSS-тің негізгі конфигурациясы төменде <script> тегінде орналасқан.
+        */
+        body {
+            /* Заманауи, оқуға жеңіл шрифт */
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* Бетті айналдырғанда пайда болатын анимация */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            will-change: opacity, transform;
+        }
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Бірінші экранның мәтініне арналған анимация */
+        .hero-text-animation {
+            animation: fadeInDown 1.2s ease-out 0.3s;
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Табиғи түстер палитрасы
+                        'brand-white': '#FFFFFF',
+                        'brand-blue': '#60A5FA',    // Аспан көк
+                        'brand-green': '#34D399',   // Шөптің жасыл түсі
+                        'brand-beige': '#F5F5DC',   // Құмды бежевый
+                        'brand-text': '#1F2937',    // Негізгі мәтін түсі (қою сұр)
+                    },
+                    fontFamily: {
+                        'sans': ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <header class="fixed top-0 left-0 right-0 bg-brand-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold text-brand-green-600">Саумалкөл</div>
+        
+        <div class="space-x-6 hidden md:flex">
+            <a href="#about" class="text-gray-600 hover:text-brand-blue transition-colors">Ауыл туралы</a>
+            <a href="#symbols" class="text-gray-600 hover:text-brand-blue transition-colors">Символдары</a>
+            <a href="#monuments" class="text-gray-600 hover:text-brand-blue transition-colors">Ескерткіштер</a>
+            <a href="#video" class="text-gray-600 hover:text-brand-blue transition-colors">Видео</a>
+        </div>
+
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu-panel" class="hidden md:hidden bg-brand-white shadow-lg absolute top-full left-0 right-0">
+        <a href="#about" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 transition-colors">Ауыл туралы</a>
+        <a href="#symbols" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 transition-colors">Символдары</a>
+        <a href="#monuments" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 transition-colors">Ескерткіштер</a>
+        <a href="#video" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 transition-colors">Видео</a>
+    </div>
+    </header>
+
+    <main>
+        <section id="hero" class="h-screen min-h-[700px] flex items-center justify-center relative text-white text-center" style="background-image: url('img/bg.png'); background-size: cover; background-position: center bottom;">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-black/70 via-black/40 to-transparent"></div>
+            <div class="relative z-10 p-8 md:p-12 hero-text-animation bg-black/40 rounded-2xl shadow-xl backdrop-blur-md border border-white/20">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-5" style="text-shadow: 2px 2px 10px rgba(0,0,0,0.6);">
+                Саумалкөл ауылы
+            </h1>
+            <p class="text-xl md:text-3xl font-light" style="text-shadow: 1px 1px 6px rgba(0,0,0,0.6);">
+                «Тарихы мен табиғаты тоғысқан мекен»
+            </p>
+        </div>
+        </section>
+
+        <div class="container mx-auto px-6 py-20 md:py-32 space-y-24 md:space-y-32 overflow-hidden">
+
+            <section id="about" class="scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-brand-text">Ауыл туралы</h2>
+                <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                    <div class="leading-relaxed space-y-4 text-lg text-gray-700">
+                        <p><strong>Саумалкөл ауылы</strong> — Солтүстік Қазақстан облысы Айыртау ауданының әкімшілік орталығы. Сондай-ақ ол Володар ауылдық округінің әкімшілік орталығы болып табылады. Ауыл осы аттас көлдің жағасында, облыс орталығы — Петропавл қаласынан 248 шақырым оңтүстік-батыста және ең жақын қала — Көкшетаудан 92 шақырым батыста орналасқан.</p>
+                        <p>Бұрын ауыл Кривоозёрное деп аталған және ол 1866 жылы Челябі уезінен өз бетімен қоныс аударған бес отбасы негізін қалаған. 1884 жылы ресми мәртебе берілді.</p>
+                        <p>1922 жылы ауыл Володарское деп аталды — бұл атау 1919 жылдың қараша айында ауыл үшін болған шайқаста Колчак әскерлерінің қолынан қаза тапқан қызыл командир Иван Володарскийдің құрметіне берілген.</p>
+                        <p>1997 жылдың 2 мамырында ауылдың аты Саумалкөл болып өзгертілді.</p>
+                        <p>2013 жылға дейін ауылдың бір бөлігі таратылған Жетікөл ауылдық округінің құрамында болған.</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="img/1.jpeg" alt="Саумалкөл ауылының әуеден көрінісі" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-video transition-transform duration-500 hover:scale-105">
+                    </div>
+                </div>
+            </section>
+
+            <section id="symbols" class="scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-brand-text">Саумалкөл ауылының символдары</h2>
+                
+                <div class="space-y-16">
+                    <div class="scroll-animate bg-blue-50 p-8 md:p-12 rounded-xl shadow-lg grid md:grid-cols-2 gap-10 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-2xl md:text-3xl font-semibold mb-6 text-brand-blue-600">Саумалкөл көлі</h3>
+                            <ul class="list-none space-y-3 text-lg text-gray-700">
+                                <li><strong>Жергілікті деңгейден биіктігі:</strong> ≈ 277,5 м</li>
+                                <li><strong>Ұзындығы:</strong> ≈ 8,2 км</li>
+                                <li><strong>Ені:</strong> ≈ 4,5 км</li>
+                                <li><strong>Жер ауданы:</strong> ≈ 24,3 км²</li>
+                                <li><strong>Орташа тереңдігі:</strong> ≈ 4,1 м</li>
+                                <li><strong>Сипаты:</strong> шығатын өзені жоқ (эндоррендік), тұзды көл</li>
+                            </ul>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img src="img/2.jpeg" alt="Саумалкөл көлі" class="rounded-xl shadow-xl w-full h-auto object-cover aspect-video transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </div>
+
+                    <div class="scroll-animate bg-beige-50 p-8 md:p-12 rounded-xl shadow-lg">
+                        <h3 class="text-2xl md:text-3xl font-semibold mb-6 text-yellow-800">🐴 Ботай мәдениетінің тарихы</h3>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="md:col-span-2 space-y-4 text-lg leading-relaxed text-gray-700">
+                                <p><strong>Ботай мәдениеті</strong> — біздің өлкеміздегі ең көне және ең маңызды археологиялық мұралардың бірі. Бұл мәдениет шамамен б.з.д. IV–III мыңжылдықтарда, яғни осыдан шамамен 5–6 мың жыл бұрын өмір сүрген.</p>
+                                <p>1970-жылдары археолог Виктор Зайберт бастаған экспедиция қазіргі Айыртау ауданына қарасты Ботай ауылының маңынан көне қонысты тапқан. Зерттеу барысында адамдардың жылқыны алғаш қолға үйреткені дәл осы жерде анықталған. Бұл жаңалық бүкіл әлем тарихындағы ең үлкен археологиялық ашылулардың бірі болды.</p>
+                                <p>Қазба жұмыстары кезінде 70 000-нан астам жылқы сүйегі табылған. Бұл – ботайлықтардың өмірі жылқымен тікелей байланысты болғанын дәлелдейді. Олар жылқыны көлік ретінде, ет пен сүт үшін пайдаланған, тіпті қымыз ашытқан.</p>
+                                <p>Ботай қонысы Саумалкөл ауылынан шамамен 30 минуттық жерде орналасқан. Сондықтан Саумалкөл үшін жылқы — жай ғана дәстүр немесе кәсіп емес, ол қанымызда бар қасиет, ата-бабамыздан қалған рухани мұра.</p>
+                                <p class="font-semibold italic text-gray-600 mt-4">Жылқы — біздің жердің, халқымыздың, тектіліктің</p>
+                            </div>
+                            <div class="md:col-span-1 flex items-center">
+                                <img src="img/3.jpeg" alt="Ботай мәдениетінің қонысы" class="rounded-xl shadow-xl w-full h-auto object-cover aspect-square transition-transform duration-500 hover:scale-105">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-animate bg-white p-8 md:p-12 rounded-xl shadow-lg">
+                        <h3 class="text-2xl md:text-3xl font-semibold mb-4 text-brand-text">Ғылыми зерттеулер</h3>
+                        <p class="text-xl italic text-center text-gray-600 mb-10">«Древняя история Северного Казахстана в трудах В. Ф. Зайберта»</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <img src="img/6.jpeg" alt="Археолог Виктор Зайберт" class="rounded-lg shadow-lg w-full h-auto object-cover aspect-[3/4] transition-transform duration-500 hover:scale-105">
+                            <img src="img/5.jpeg" alt="Виктор Зайберт - Ботай кітабы" class="rounded-lg shadow-lg w-full h-auto object-cover aspect-[3/4] transition-transform duration-500 hover:scale-105">
+                            <img src="img/4.jpeg" alt="Виктор Зайберт - Ботайская Культура кітабы" class="rounded-lg shadow-lg w-full h-auto object-cover aspect-[3/4] transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </div>
+
+                    <div class="scroll-animate bg-green-50 p-8 md:p-12 rounded-xl shadow-lg">
+                        <h3 class="text-2xl md:text-3xl font-semibold mb-6 text-brand-green-700">🐎 Жылқы мәдениеті</h3>
+                        <div class="grid md:grid-cols-2 gap-10 items-center">
+                            <div class="space-y-4 text-lg leading-relaxed text-gray-700">
+                                <p>Саумалкөл өңірінде жылқы — жай ғана жануар емес, ол халықтың өмір салты мен дәстүрінің ажырамас бөлігі.</p>
+                                <ul class="list-none space-y-3 pl-2">
+                                    <li class="flex items-start">
+                                        <span class="text-brand-green-600 mr-2 mt-1">✔</span>
+                                        <strong>Ұлттық ойындар:</strong> Көкпар, бәйге, жорға жарысы сияқты ұлттық ойындар жиі өткізіледі, бұл жергілікті мәдениеттің тірі екенін көрсетеді.
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-brand-green-600 mr-2 mt-1">✔</span>
+                                        <strong>Жазғы жайылым (Жайлау):</strong> Жаз айларында ауыл сыртындағы кең жазықтарда жайылып жүрген үйір-үйір жылқылар — ата-баба кәсібінің жалғасы.
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-brand-green-600 mr-2 mt-1">✔</span>
+                                        <strong>Өндіріс:</strong> Жылқы еті мен саумал, қымыз өндірісі тек дәстүр ғана емес, сонымен қатар жергілікті экономиканың маңызды бөлігі.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <img src="img/10.jpeg" alt="Саумалкөл жолындағы жылқылар" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-video transition-transform duration-500 hover:scale-105">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="monuments" class="scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-brand-text">Саумалкөл ауылының ескерткіштері</h2>
+                <div class="space-y-20">
+
+                    <div class="scroll-animate grid md:grid-cols-2 gap-10 items-center bg-white p-8 rounded-xl shadow-lg">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4 text-brand-blue-600">Сырымбет — Шоқан Уәлихановтың балалық шағы</h3>
+                            <p class="text-lg leading-relaxed text-gray-700">
+                                Саумалкөл ауылынан шамамен 30 шақырым жерде тарихи маңызы зор Сырымбет ауылы орналасқан. Бұл ауыл — ұлы ғалым, этнограф және саяхатшы Шоқан Уәлихановтың балалық шағы өткен жер.
+                            </p>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img src="img/11.jpeg" alt="Қарасай мен Ағынтай батырлар кешені" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-video transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </div>
+                    
+                    <div class="scroll-animate grid md:grid-cols-2 gap-10 items-center bg-white p-8 rounded-xl shadow-lg">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-2xl font-semibold mb-4 text-brand-blue-600">Қарасай мен Ағынтай батырлар кешені</h3>
+                            <div class="text-lg leading-relaxed text-gray-700 space-y-3">
+                                <p>
+                                   Саумалкөл ауылының маңында халқымыздың тарихында ерекше орын алатын қасиетті орындардың бірі — Қарасай мен Ағынтай батырлардың мемориалдық кешені орналасқан. Бұл кешен Саумалкөлден шамамен 30 шақырым жерде, Айыртау ауданында орналасқан.
+                                </p>
+                                <p>
+                                   Кешен 1999 жылы жоңғар шапқыншылығына қарсы күресте ел тәуелсіздігі үшін жанын қиған қос батыр — Қарасай мен Ағынтайға арналып салынған. Олардың достығы мен ерлігі қазақ халқының бірлігі мен батырлық рухының символына айналды.
+                                </p>
+                                <p>
+                                    Мемориал кешенінде екі зәулім кесене, олардың ортасында шағын мешіт бар. Бұл жер бүгінде тарихи және рухани маңызы зор қасиетті мекен саналады.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img src="img/9.jpeg" alt="Қарасай мен Ағынтай батырлар кешені" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-video transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </div>
+
+                    <div class="scroll-animate grid md:grid-cols-2 gap-10 items-center bg-white p-8 rounded-xl shadow-lg">
+                        <div>
+                            <img src="img/8.jpeg" alt="Ақан сері ескерткіші" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-square md:aspect-video transition-transform duration-500 hover:scale-105">
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4 text-brand-blue-600">Ақан сері ескерткіші</h3>
+                            <div class="text-lg leading-relaxed text-gray-700 space-y-3">
+                                <p>
+                                    Саумалкөл ауылында атақты ақын, әнші және композитор Ақан сері Қорамсаұлына арналған ескерткіш орнатылған. Бұл ескерткіш 1991 жылы 1 тамызда ашылған. Оның авторлары — сәулетші А. Қайнарбаев пен мүсінші Т. Досмағамбетов.
+                                </p>
+                                <p>
+                                    Мүсін қоладан жасалып, тұғыры граниттен тұрғызылған. Жалпы биіктігі шамамен 5,5 метр, оның ішінде тұғыры — 2,25 м, ал мүсіннің өз биіктігі — 3,25 м.
+                                </p>
+                                <p>
+                                    Ескерткіш Ақан серінің өнері мен еркін рухына, қазақ халқының әншілік дәстүріне арналған.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-animate grid md:grid-cols-2 gap-10 items-center bg-white p-8 rounded-xl shadow-lg">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-2xl font-semibold mb-4 text-brand-blue-600">Ұлы Отан соғысы батырларының ескерткіші</h3>
+                            <div class="text-lg leading-relaxed text-gray-700 space-y-3">
+                                <p>
+                                    Саумалкөл ауылында Ұлы Отан соғысында қаза тапқан батыр жерлестерге арналған ескерткіш бар. Бұл ескерткіш соғыс жылдарында ел қорғауға аттанған ауыл азаматтарының ерлігін еске алу мақсатында орнатылған.
+                                </p>
+                                <p>
+                                    Ескерткіш жанында соғысқа қатысқан және оралмаған сарбаздардың есімдері жазылған тақта бар. Ол Саумалкөлдің тарихындағы ауыр да ерлікке толы кезеңді еске салып тұратын қасиетті орын саналады.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img src="img/7.jpeg" alt="ҰОС батырларының ескерткіші" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-video transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="video" class="scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-brand-text">Ауыл туралы видео</h2>
+                <video 
+                class="w-full aspect-video rounded-xl shadow-lg" 
+                src="img/video.mp4"
+                controls>
+                Ваш браузер не поддерживает тег video.
+            </video>
+            </section>
+
+        </div> </main>
+
+    <footer class="bg-brand-text text-brand-white/70 mt-20 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-semibold text-lg">Айыртау ауданы, Саумалкөл ауылы</p>
+            <p class="text-sm mt-3 opacity-80">© Көкшетау, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Элементтің 10%-ы көрінгенде іске қосылады
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Анимация бір рет ойналған соң, бақылауды тоқтату
+                    }
+                });
+            }, observerOptions);
+
+            // '.scroll-animate' класы бар барлық элементтерді бақылау
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const menuPanel = document.getElementById('mobile-menu-panel');
+
+            // 1. По клику на кнопку-гамбургер
+            if (menuButton && menuPanel) {
+                menuButton.addEventListener('click', () => {
+                    // Переключаем класс 'hidden', чтобы показать или скрыть меню
+                    menuPanel.classList.toggle('hidden');
+                });
+            }
+
+            // 2. (Бонус) Закрывать меню при клике на ссылку в нем
+            const menuLinks = menuPanel.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuPanel.classList.add('hidden'); // Скрываем меню
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
